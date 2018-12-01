@@ -28,7 +28,8 @@ import TaskDetails from '../containers/task-details';
 import FloatingAddButton from '../containers/AddButton'
 import SimpleModalWrapped from "../containers/addTaskModal";
 import TaskCreateForm from "../forms/task-create-form";
-import Login from "../forms/login";
+import LoginApp from "../forms/login";
+import SignupApp from '../forms/signup'
 
 
 const drawerWidth = 240;
@@ -325,6 +326,8 @@ class ResponsiveDrawer extends React.Component {
                     <TaskDetails />
                     {/*<FloatingAddButton/>*/}
                     <SimpleModalWrapped/>
+                    <LoginApp/>
+                    <SignupApp/>
                     {/*<TaskCreateForm/>*/}
                     {/*<Login/>*/}
                 </main>
