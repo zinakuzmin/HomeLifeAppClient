@@ -13,12 +13,19 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import FiberNew from '@material-ui/icons/FiberNew';
 import AddIcon from '@material-ui/icons/Add';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
+import { Container, Row, Col } from 'reactstrap';
 
+/*
+    Setting rows and columns(Installed):   https://reactstrap.github.io/components/layout/
+    Setting ag-grid(need Installation):    https://www.ag-grid.com/react-getting-started/
+                                           https://www.ag-grid.com/javascript-grid-cell-rendering-components/
+ */
 
 const styles = theme => ({
     container: {
@@ -36,10 +43,6 @@ class DialogSelect extends React.Component {
         open: false,
         age: '',
     };
-
-
-
-
 
     handleChange = name => event => {
         this.setState({ [name]: Number(event.target.value) });
@@ -78,118 +81,130 @@ class DialogSelect extends React.Component {
                     <DialogContent>
                         <form className={classes.container}>
                             {/*<FormControl className={classes.formControl}>*/}
-                                {/*<InputLabel htmlFor="age-native-simple">Age</InputLabel>*/}
-                                {/*<Select*/}
-                                    {/*native*/}
-                                    {/*value={this.state.age}*/}
-                                    {/*onChange={this.handleChange('age')}*/}
-                                    {/*input={<Input id="age-native-simple" />}*/}
-                                {/*>*/}
-                                    {/*<option value="" />*/}
-                                    {/*<option value={10}>Ten</option>*/}
-                                    {/*<option value={20}>Twenty</option>*/}
-                                    {/*<option value={30}>Thirty</option>*/}
-                                {/*</Select>*/}
+                            {/*<InputLabel htmlFor="age-native-simple">Age</InputLabel>*/}
+                            {/*<Select*/}
+                            {/*native*/}
+                            {/*value={this.state.age}*/}
+                            {/*onChange={this.handleChange('age')}*/}
+                            {/*input={<Input id="age-native-simple" />}*/}
+                            {/*>*/}
+                            {/*<option value="" />*/}
+                            {/*<option value={10}>Ten</option>*/}
+                            {/*<option value={20}>Twenty</option>*/}
+                            {/*<option value={30}>Thirty</option>*/}
+                            {/*</Select>*/}
                             {/*</FormControl>*/}
                             {/*<FormControl className={classes.formControl}>*/}
-                                {/*<InputLabel htmlFor="age-simple">Age</InputLabel>*/}
-                                {/*<Select*/}
-                                    {/*value={this.state.age}*/}
-                                    {/*onChange={this.handleChange('age')}*/}
-                                    {/*input={<Input id="age-simple" />}*/}
-                                {/*>*/}
-                                    {/*<MenuItem value="">*/}
-                                        {/*<em>None</em>*/}
-                                    {/*</MenuItem>*/}
-                                    {/*<MenuItem value={10}>Ten</MenuItem>*/}
-                                    {/*<MenuItem value={20}>Twenty</MenuItem>*/}
-                                    {/*<MenuItem value={30}>Thirty</MenuItem>*/}
-                                {/*</Select>*/}
+                            {/*<InputLabel htmlFor="age-simple">Age</InputLabel>*/}
+                            {/*<Select*/}
+                            {/*value={this.state.age}*/}
+                            {/*onChange={this.handleChange('age')}*/}
+                            {/*input={<Input id="age-simple" />}*/}
+                            {/*>*/}
+                            {/*<MenuItem value="">*/}
+                            {/*<em>None</em>*/}
+                            {/*</MenuItem>*/}
+                            {/*<MenuItem value={10}>Ten</MenuItem>*/}
+                            {/*<MenuItem value={20}>Twenty</MenuItem>*/}
+                            {/*<MenuItem value={30}>Thirty</MenuItem>*/}
+                            {/*</Select>*/}
                             {/*</FormControl>*/}
-                            <FormControl className={classes.margin}>
-                                <InputLabel htmlFor="input-with-icon-adornment">Add task name</InputLabel>
-                                <Input
-                                    id="input-with-icon-adornment"
-                                    // startAdornment={
-                                    //     <InputAdornment position="start">
-                                    //     </InputAdornment>
-                                    // }
-                                />
-                            </FormControl>
-                            <TextField
-                                className={classes.margin}
-                                id="input-with-icon-textfield"
-                                label="Task description"
-                                // InputProps={{
-                                //     startAdornment: (
-                                //         <InputAdornment position="start">
-                                //         </InputAdornment>
-                                //     ),
-                                // }}
-                            />
-                            <TextField
-                                id="datetime-local"
-                                label="When"
-                                type="datetime-local"
-                                defaultValue="2018-05-24T10:30"
-                                className={classes.textField}
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                                // InputProps={{
-                                //     startAdornment: (
-                                //         <InputAdornment position="start">
-                                //         </InputAdornment>
-                                //     ),
-                                // }}
-                            />
-
-                            <FormControlLabel
-                                control={
-                                    <Switch
-                                        checked={this.state.checkedA}
-                                        onChange={this.handleChange('checkedA')}
-                                        value="checkedA"
+                            <Container>
+                                <Row>
+                                    <FormControl className={classes.margin}>
+                                        <InputLabel htmlFor="input-with-icon-adornment">Add task name</InputLabel>
+                                        <Input
+                                            id="input-with-icon-adornment"
+                                            // startAdornment={
+                                            //     <InputAdornment position="start">
+                                            //     </InputAdornment>
+                                            // }
+                                        />
+                                    </FormControl>
+                                </Row>
+                                <Row>
+                                    <TextField
+                                        className={classes.margin}
+                                        id="input-with-icon-textfield"
+                                        label="Task description"
+                                        // InputProps={{
+                                        //     startAdornment: (
+                                        //         <InputAdornment position="start">
+                                        //         </InputAdornment>
+                                        //     ),
+                                        // }}
                                     />
-                                }
-                                label="Is driving license required"
-                            />
-
-                            <FormControlLabel
-                                control={
-                                    <Switch
-                                        checked={this.state.checkedA}
-                                        onChange={this.handleChange('checkedA')}
-                                        value="checkedB"
+                                </Row>
+                                <Row>
+                                    <TextField
+                                        id="datetime-local"
+                                        label="When"
+                                        type="datetime-local"
+                                        defaultValue="2018-05-24T10:30"
+                                        className={classes.textField}
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        // InputProps={{
+                                        //     startAdornment: (
+                                        //         <InputAdornment position="start">
+                                        //         </InputAdornment>
+                                        //     ),
+                                        // }}
                                     />
-                                }
-                                label="Is adult task"
-                            />
-
-                            <TextField
-                                className={classes.margin}
-                                id="input-with-icon-textfield"
-                                label="Task assignee"
-                                InputProps={{
-                                    startAdornment: (
-                                        <InputAdornment position="start">
-                                            <AccountCircle />
-                                        </InputAdornment>
-                                    ),
-                                }}
-                            />
-
-                            {/*<div className={classes.margin}>*/}
+                                </Row>
+                                <Row>
+                                    <FormControlLabel
+                                        control={
+                                            <Switch
+                                                checked={this.state.checkedA}
+                                                onChange={this.handleChange('checkedA')}
+                                                value="checkedA"
+                                            />
+                                        }
+                                        label="Is driving license required"
+                                    />
+                                </Row>
+                                <Row>
+                                    <FormControlLabel
+                                        control={
+                                            <Switch
+                                                checked={this.state.checkedA}
+                                                onChange={this.handleChange('checkedA')}
+                                                value="checkedB"
+                                            />
+                                        }
+                                        label="Is adult task"
+                                    />
+                                </Row>
+                                <Row>
+                                    <TextField
+                                        className={classes.margin}
+                                        id="input-with-icon-textfield"
+                                        label="Task assignee"
+                                        InputProps={{
+                                            startAdornment: (
+                                                <InputAdornment position="start">
+                                                    <AccountCircle />
+                                                </InputAdornment>
+                                            ),
+                                        }}
+                                    />
+                                </Row>
+                                {/*<div className={classes.margin}>*/}
                                 {/*<Grid container spacing={8} alignItems="flex-end">*/}
-                                    {/*<Grid item>*/}
-                                        {/*<AccountCircle />*/}
-                                    {/*</Grid>*/}
-                                    {/*<Grid item>*/}
-                                        {/*<TextField id="input-with-icon-grid" label="With a grid" />*/}
-                                    {/*</Grid>*/}
+                                {/*<Grid item>*/}
+                                {/*<AccountCircle />*/}
                                 {/*</Grid>*/}
-                            {/*</div>*/}
+                                {/*<Grid item>*/}
+                                {/*<TextField id="input-with-icon-grid" label="With a grid" />*/}
+                                {/*</Grid>*/}
+                                {/*</Grid>*/}
+                                {/*</div>*/}
+
+                            </Container>
                         </form>
+
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.handleCloseDontSave} color="primary">
@@ -204,6 +219,7 @@ class DialogSelect extends React.Component {
         );
     }
 }
+
 
 DialogSelect.propTypes = {
     classes: PropTypes.object.isRequired,
