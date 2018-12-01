@@ -62,9 +62,11 @@ const styles = theme => ({
     },
 
     sectionDesktop: {
-        display: 'none',
+        // display: 'none',
+        //style={{right:"0",position:"absolute"}}
         [theme.breakpoints.up('md')]: {
             display: 'flex',
+            padding: theme.spacing.unit * 2,
         },
     },
     sectionMobile: {
@@ -73,9 +75,6 @@ const styles = theme => ({
             display: 'none',
         },
     },
-
-
-
 
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
@@ -93,8 +92,6 @@ class ResponsiveDrawer extends React.Component {
         anchorEl: null,
         mobileMoreAnchorEl: null,
     };
-
-
 
     handleProfileMenuOpen = event => {
         this.setState({ anchorEl: event.currentTarget });
@@ -120,9 +117,6 @@ class ResponsiveDrawer extends React.Component {
 
     render() {
         const { theme } = this.props;
-
-
-
         const { anchorEl, mobileMoreAnchorEl } = this.state;
         const { classes } = this.props;
         const isMenuOpen = Boolean(anchorEl);
@@ -140,9 +134,6 @@ class ResponsiveDrawer extends React.Component {
                 <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
             </Menu>
         );
-
-
-
 
         const renderMobileMenu = (
             <Menu
@@ -177,15 +168,6 @@ class ResponsiveDrawer extends React.Component {
             </Menu>
         );
 
-
-
-
-
-
-
-
-
-
         const drawer = (
             <div>
                 <div className={classes.toolbar} />
@@ -213,6 +195,7 @@ class ResponsiveDrawer extends React.Component {
         return (
             <div className={classes.root}>
                 <CssBaseline />
+
                 <AppBar position="fixed" className={classes.appBar}>
                     <Toolbar>
                         <IconButton
@@ -224,9 +207,9 @@ class ResponsiveDrawer extends React.Component {
                             <MenuIcon />
                         </IconButton>
                         <img src="home.png" width="40"/>
-                        <Typography variant="h6" color="inherit" noWrap>
-                            Home Life
-                        </Typography>
+                        {/*<Typography variant="h6" color="inherit" noWrap>*/}
+                            {/*Home Life*/}
+                        {/*</Typography>*/}
 
                         {/*const renderMenu = (*/}
                         {/*<Menu*/}
@@ -240,27 +223,28 @@ class ResponsiveDrawer extends React.Component {
                             {/*<MenuItem onClick={this.handleMenuClose}>My account</MenuItem>*/}
                         {/*</Menu>*/}
                         {/*);*/}
-                        <div className={classes.grow} />
-                        <div className={classes.sectionDesktop}>
-                            <IconButton color="inherit">
-                                <Badge badgeContent={4} color="secondary">
-                                    <MailIcon />
-                                </Badge>
-                            </IconButton>
-                            <IconButton color="inherit">
-                                <Badge badgeContent={17} color="secondary">
-                                    <NotificationsIcon />
-                                </Badge>
-                            </IconButton>
-                            <IconButton
-                                aria-owns={isMenuOpen ? 'material-appbar' : undefined}
-                                aria-haspopup="true"
-                                onClick={this.handleProfileMenuOpen}
-                                color="inherit"
-
-                            >
-                                <AccountCircle />
-                            </IconButton>
+                        {/*<div className={classes.grow}/> */}
+                        <div id="alignProfileButton" style={{right:"0",position:"absolute"}}>
+                            <div className={classes.sectionDesktop}>
+                                {/*<IconButton color="inherit">*/}
+                                    {/*<Badge badgeContent={4} color="secondary">*/}
+                                        {/*<MailIcon />*/}
+                                    {/*</Badge>*/}
+                                {/*</IconButton>*/}
+                                {/*<IconButton color="inherit">*/}
+                                    {/*<Badge badgeContent={17} color="secondary">*/}
+                                        {/*<NotificationsIcon />*/}
+                                    {/*</Badge>*/}
+                                {/*</IconButton>*/}
+                                <IconButton
+                                    aria-owns={isMenuOpen ? 'material-appbar' : undefined}
+                                    aria-haspopup="true"
+                                    onClick={this.handleProfileMenuOpen}
+                                    color="inherit"
+                                >
+                                    <AccountCircle />
+                                </IconButton>
+                            </div>
                         </div>
                     </Toolbar>
                 </AppBar>
