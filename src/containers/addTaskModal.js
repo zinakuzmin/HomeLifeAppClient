@@ -19,7 +19,14 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
+import { Container, Row, Col } from 'reactstrap';
 
+/*
+    Setting rows and columns(Installed):   https://reactstrap.github.io/components/layout/
+
+    Setting ag-grid(need Installation):    https://www.ag-grid.com/react-getting-started/
+                                           https://www.ag-grid.com/javascript-grid-cell-rendering-components/
+ */
 
 const styles = theme => ({
     container: {
@@ -33,14 +40,10 @@ const styles = theme => ({
 });
 
 class DialogSelect extends React.Component {
-    state = {
+     state = {
         open: false,
         age: '',
     };
-
-
-
-
 
     handleChange = name => event => {
         this.setState({ [name]: Number(event.target.value) });
@@ -107,6 +110,8 @@ class DialogSelect extends React.Component {
                                     {/*<MenuItem value={30}>Thirty</MenuItem>*/}
                                 {/*</Select>*/}
                             {/*</FormControl>*/}
+                            <Container>
+                            <Row>
                             <FormControl className={classes.margin}>
                                 <InputLabel htmlFor="input-with-icon-adornment">Add task name</InputLabel>
                                 <Input
@@ -117,6 +122,8 @@ class DialogSelect extends React.Component {
                                     // }
                                 />
                             </FormControl>
+                            </Row>
+                            <Row>
                             <TextField
                                 className={classes.margin}
                                 id="input-with-icon-textfield"
@@ -128,6 +135,8 @@ class DialogSelect extends React.Component {
                                 //     ),
                                 // }}
                             />
+                            </Row>
+                            <Row>
                             <TextField
                                 id="datetime-local"
                                 label="When"
@@ -144,7 +153,8 @@ class DialogSelect extends React.Component {
                                 //     ),
                                 // }}
                             />
-
+                            </Row>
+                            <Row>
                             <FormControlLabel
                                 control={
                                     <Switch
@@ -155,7 +165,8 @@ class DialogSelect extends React.Component {
                                 }
                                 label="Is driving license required"
                             />
-
+                            </Row>
+                            <Row>
                             <FormControlLabel
                                 control={
                                     <Switch
@@ -166,7 +177,8 @@ class DialogSelect extends React.Component {
                                 }
                                 label="Is adult task"
                             />
-
+                            </Row>
+                            <Row>
                             <TextField
                                 className={classes.margin}
                                 id="input-with-icon-textfield"
@@ -179,7 +191,7 @@ class DialogSelect extends React.Component {
                                     ),
                                 }}
                             />
-
+                            </Row>
                             {/*<div className={classes.margin}>*/}
                                 {/*<Grid container spacing={8} alignItems="flex-end">*/}
                                     {/*<Grid item>*/}
@@ -190,7 +202,10 @@ class DialogSelect extends React.Component {
                                     {/*</Grid>*/}
                                 {/*</Grid>*/}
                             {/*</div>*/}
+
+                            </Container>
                         </form>
+
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.handleCloseDontSave} color="primary">
@@ -205,6 +220,7 @@ class DialogSelect extends React.Component {
         );
     }
 }
+
 
 DialogSelect.propTypes = {
     classes: PropTypes.object.isRequired,
