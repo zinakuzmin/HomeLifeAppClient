@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Control } from 'react-redux-form';
+import { Col, Tabs, Tab, FormGroup, Form, Control, FormControl, ControlLabel, Alert, Button } from 'react-redux-form';
 
 class TaskCreateForm extends React.Component {
     handleSubmit(values) {
@@ -10,31 +10,22 @@ class TaskCreateForm extends React.Component {
     render() {
         return (
             <Form
-                model="task"
+                model="user"
                 onSubmit={(val) => this.handleSubmit(val)}
             >
-                <label>Task Title</label>
-                <Control.text model="task.title"
-                              validators={{
-                                  required: (val) => !!val.length,
-                                  minLength: (val) => val.length > 8,
-                              }}
-                />
-                {/*<Errors*/}
-                    {/*model="task.title"*/}
-                    {/*messages={{*/}
-                        {/*required: 'Task title is required.',*/}
-                        {/*minLength: 'Task title must be more than 8 characters.',*/}
-                    {/*}}*/}
-                {/*/>*/}
+                <label>Your name?</label>
+                <Control.text model="user.name" />
 
-                <label>Task Description</label>
-                <Control.text model="task.description" />
-
-
+                <label>
+                    <Control.checkbox model="user.remember" />
+                    Remember me
+                </label>
 
                 <button>Submit!</button>
             </Form>
+
+
+
         );
     }
 }
