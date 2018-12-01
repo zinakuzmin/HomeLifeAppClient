@@ -1,0 +1,239 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+import TodoTextInput from '../components/TodoTextInput'
+
+const Header = ({ addTodo }) => (
+    <header className="header">
+        <h1>todos</h1>
+        <TodoTextInput
+            newTodo
+            onSave={(text) => {
+                if (text.length !== 0) {
+                    addTodo(text)
+                }
+            }}
+            placeholder="What needs to be done?"
+        />
+    </header>
+)
+
+Header.propTypes = {
+    addTodo: PropTypes.func.isRequired
+}
+
+export default Header
+
+
+
+
+
+
+
+
+
+
+
+// import React from 'react';
+// import PropTypes from 'prop-types';
+// import Button from '@material-ui/core/Button';
+// import { withStyles } from '@material-ui/core/styles';
+// import Dialog from '@material-ui/core/Dialog';
+// import DialogActions from '@material-ui/core/DialogActions';
+// import DialogContent from '@material-ui/core/DialogContent';
+// import DialogTitle from '@material-ui/core/DialogTitle';
+// import InputLabel from '@material-ui/core/InputLabel';
+// import Input from '@material-ui/core/Input';
+// import MenuItem from '@material-ui/core/MenuItem';
+// import FormControl from '@material-ui/core/FormControl';
+// import Select from '@material-ui/core/Select';
+// import InputAdornment from '@material-ui/core/InputAdornment';
+// import AccountCircle from '@material-ui/icons/AccountCircle';
+// import FiberNew from '@material-ui/icons/FiberNew';
+// import AddShoppingCart from '@material-ui/icons/AddShoppingCart';
+// import TextField from '@material-ui/core/TextField';
+// import Grid from '@material-ui/core/Grid';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import Switch from '@material-ui/core/Switch';
+// import { Container, Row, Col } from 'reactstrap';
+//
+// /*
+//     Setting rows and columns(Installed):   https://reactstrap.github.io/components/layout/
+//     Setting ag-grid(need Installation):    https://www.ag-grid.com/react-getting-started/
+//                                            https://www.ag-grid.com/javascript-grid-cell-rendering-components/
+//  */
+//
+// const styles = theme => ({
+//     container: {
+//         display: 'flex',
+//         flexWrap: 'wrap',
+//     },
+//     formControl: {
+//         margin: theme.spacing.unit,
+//         minWidth: 120,
+//     },
+// });
+//
+// class AddGroceryListDialog extends React.Component {
+//     state = {
+//         open: false,
+//         age: '',
+//     };
+//
+//     handleChange = name => event => {
+//         this.setState({ [name]: Number(event.target.value) });
+//     };
+//
+//     handleClickOpen = () => {
+//         this.setState({ open: true });
+//     };
+//
+//     handleCloseDontSave = () => {
+//         console.log("cancel - close don't save task")
+//         this.setState({ open: false });
+//     };
+//
+//     handleAddTaskAndClose = () => {
+//         console.log("Save data and close")
+//         this.setState({ open: false });
+//     };
+//
+//     render() {
+//         const { classes } = this.props;
+//
+//         return (
+//             <div>
+//                 {/*<Button onClick={this.handleClickOpen}>Open select dialog</Button>*/}
+//                 <Button variant="fab" color="primary" aria-label="Add" className="button-zina" onClick={this.handleClickOpen}>
+//                     <AddShoppingCart />
+//                 </Button>
+//                 <Dialog
+//                     disableBackdropClick
+//                     disableEscapeKeyDown
+//                     open={this.state.open}
+//                     onClose={this.handleClose}
+//                 >
+//                     <DialogTitle>Create a new task</DialogTitle>
+//                     <DialogContent>
+//                         <form className={classes.container}>
+//
+//                             <Container>
+//                                 <Row>
+//                                     <FormControl className={classes.margin}>
+//                                         <InputLabel htmlFor="input-with-icon-adornment">Add task name</InputLabel>
+//                                         <Input
+//                                             id="input-with-icon-adornment"
+//                                             // startAdornment={
+//                                             //     <InputAdornment position="start">
+//                                             //     </InputAdornment>
+//                                             // }
+//                                         />
+//                                     </FormControl>
+//                                 </Row>
+//                                 <Row>
+//                                     <TextField
+//                                         className={classes.margin}
+//                                         id="input-with-icon-textfield"
+//                                         label="Task description"
+//                                         // InputProps={{
+//                                         //     startAdornment: (
+//                                         //         <InputAdornment position="start">
+//                                         //         </InputAdornment>
+//                                         //     ),
+//                                         // }}
+//                                     />
+//                                 </Row>
+//                                 <Row>
+//                                     <TextField
+//                                         id="datetime-local"
+//                                         label="When"
+//                                         type="datetime-local"
+//                                         defaultValue="2018-05-24T10:30"
+//                                         className={classes.textField}
+//                                         InputLabelProps={{
+//                                             shrink: true,
+//                                         }}
+//                                         // InputProps={{
+//                                         //     startAdornment: (
+//                                         //         <InputAdornment position="start">
+//                                         //         </InputAdornment>
+//                                         //     ),
+//                                         // }}
+//                                     />
+//                                 </Row>
+//                                 <Row>
+//                                     <FormControlLabel
+//                                         control={
+//                                             <Switch
+//                                                 checked={this.state.checkedA}
+//                                                 onChange={this.handleChange('checkedA')}
+//                                                 value="checkedA"
+//                                             />
+//                                         }
+//                                         label="Is driving license required"
+//                                     />
+//                                 </Row>
+//                                 <Row>
+//                                     <FormControlLabel
+//                                         control={
+//                                             <Switch
+//                                                 checked={this.state.checkedA}
+//                                                 onChange={this.handleChange('checkedA')}
+//                                                 value="checkedB"
+//                                             />
+//                                         }
+//                                         label="Is adult task"
+//                                     />
+//                                 </Row>
+//                                 <Row>
+//                                     <TextField
+//                                         className={classes.margin}
+//                                         id="input-with-icon-textfield"
+//                                         label="Task assignee"
+//                                         InputProps={{
+//                                             startAdornment: (
+//                                                 <InputAdornment position="start">
+//                                                     <AccountCircle />
+//                                                 </InputAdornment>
+//                                             ),
+//                                         }}
+//                                     />
+//                                 </Row>
+//
+//
+//                             </Container>
+//                         </form>
+//
+//                     </DialogContent>
+//                     <DialogActions>
+//                         <Button onClick={this.handleCloseDontSave} color="primary">
+//                             Cancel
+//                         </Button>
+//                         <Button onClick={this.handleAddTaskAndClose} color="primary">
+//                             Ok
+//                         </Button>
+//                     </DialogActions>
+//                 </Dialog>
+//             </div>
+//         );
+//     }
+// }
+//
+//
+// AddGroceryListDialog.propTypes = {
+//     classes: PropTypes.object.isRequired,
+// };
+//
+// export default withStyles(styles)(AddGroceryListDialog);
+//
+//
+//
+// class SwitchLabels extends React.Component {
+//     state = {
+//         checkedA: true,
+//         checkedB: true,
+//     };
+//
+//     handleChange = name => event => {
+//         this.setState({[name]: event.target.checked});
+//     };
+// }
