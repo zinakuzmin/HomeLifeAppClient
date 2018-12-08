@@ -64,10 +64,18 @@ class DialogSelect extends React.Component {
         this.setState({ open: false });
     };
 
+
+   Users = [
+        { value: 'Zina Kuzmin', id: '1' },
+        { value: 'Dima Kuzmin', id: '2' }
+    ];
+
     render() {
         const { classes } = this.props;
 
-        this.countryData = this.props.users
+        // this.countryData = this.props.users
+        console.log("Users")
+        console.log(this.props.users)
 
 
         // this.state.data.countryData = "USA"
@@ -81,6 +89,8 @@ class DialogSelect extends React.Component {
         this.state.data = {
             country: "Zina"
         };
+
+
 
         return (
             <div>
@@ -129,12 +139,13 @@ class DialogSelect extends React.Component {
                                         InputLabelProps={{
                                             shrink: true,
                                         }}
-                                        // InputProps={{
-                                        //     startAdornment: (
-                                        //         <InputAdornment position="start">
-                                        //         </InputAdornment>
-                                        //     ),
-                                        // }}
+                                    />
+                                </Row>
+                                <Row>
+                                    <TextField
+                                        className={classes.margin}
+                                        id="input-with-icon-textfield"
+                                        label="Task duration in minutes"
                                     />
                                 </Row>
                                 <Row>
@@ -176,11 +187,11 @@ class DialogSelect extends React.Component {
                                     />
                                 </Row>
                                 <Row>
-                                    {/*<select name="country" value={this.state.data.country}>*/}
+                                    {/*<select name="country" value={this.countryData}>*/}
                                         {/*/!*<select name="country" value={this.state.data.country}>*!/*/}
-                                        {/*{this.props.users.map((user) => {*/}
-                                            {/*return <option key={user.id} value={user.firstName}>{user.firstName}</option>;*/}
-                                        {/*})}*/}
+                                        {/*{return this.countryData((e) => {*/}
+                                            {/*return <option key={e.id} value={e.name}>{e.name}</option>;*/}
+                                        {/*});};*/}
                                     {/*</select>*/}
                                 </Row>
 
@@ -193,17 +204,6 @@ class DialogSelect extends React.Component {
 
 
                                 </Row>
-                                {/*<div className={classes.margin}>*/}
-                                {/*<Grid container spacing={8} alignItems="flex-end">*/}
-                                {/*<Grid item>*/}
-                                {/*<AccountCircle />*/}
-                                {/*</Grid>*/}
-                                {/*<Grid item>*/}
-                                {/*<TextField id="input-with-icon-grid" label="With a grid" />*/}
-                                {/*</Grid>*/}
-                                {/*</Grid>*/}
-                                {/*</div>*/}
-
                             </Container>
                         </form>
 
@@ -230,17 +230,17 @@ DialogSelect.propTypes = {
 export default withStyles(styles)(DialogSelect);
 
 
-
-class SwitchLabels extends React.Component {
-    state = {
-        checkedA: true,
-        checkedB: true,
-    };
-
-    handleChange = name => event => {
-        this.setState({[name]: event.target.checked});
-    };
-}
+//
+// class SwitchLabels extends React.Component {
+//     state = {
+//         checkedA: true,
+//         checkedB: true,
+//     };
+//
+//     handleChange = name => event => {
+//         this.setState({[name]: event.target.checked});
+//     };
+// }
 
 function  mapStateToProps(state) {
     return {

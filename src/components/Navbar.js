@@ -34,7 +34,12 @@ import SignupApp from '../forms/signup'
 import AddGroceryListDialog from "../containers/addGroceryListDialog";
 import Header from '../components/addGroceryItems'
 import Footer from "./Footer";
+import TasksPage from "../containers/TasksPage";
+import CalendarPage from "../containers/calendarPage";
+import ShoppingListsPage from "../containers/ShoppingListsPage";
 //import AddGroceryListFloatingButton from '../containers/AddGroceryButton'
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import UserProfilePage from "../containers/UserProfilePage";
 
 
 
@@ -103,6 +108,7 @@ class ResponsiveDrawer extends React.Component {
     handleMenuClose = () => {
         this.setState({ anchorEl: null });
         this.handleMobileMenuClose();
+        // this.menuItems.push("blabla");
     };
 
     handleMobileMenuOpen = event => {
@@ -118,12 +124,30 @@ class ResponsiveDrawer extends React.Component {
         this.setState(state => ({ mobileOpen: !state.mobileOpen }));
     };
 
+    drawerMenuItems = ['ToDo', 'Calendar', 'Shopping lists'];
+
+    menuItems = ['Profile', 'My Account', 'Log out'];
+
+
+
+    createMenuItemList() {
+        return this.menuItems.map((item) => {
+            return (
+                <Link to='/profile' style={{ textDecoration: 'none' }}>
+                     <MenuItem href="/profile" onClick={this.handleMenuClose}>{item}</MenuItem>
+                </Link>
+            );
+        });
+    };
+
     render() {
         const { theme } = this.props;
         const { anchorEl, mobileMoreAnchorEl } = this.state;
         const { classes } = this.props;
         const isMenuOpen = Boolean(anchorEl);
         const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+
 
         const renderMenu = (
             <Menu
@@ -133,8 +157,9 @@ class ResponsiveDrawer extends React.Component {
                 open={isMenuOpen}
                 onClose={this.handleMenuClose}
             >
-                <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-                <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
+                {this.createMenuItemList()}
+                {/*<MenuItem onClick={this.handleMenuClose}>My account</MenuItem>*/}
+                {/*<MenuItem onClick={this.handleMenuClose}>Log out</MenuItem>*/}
             </Menu>
         );
 
@@ -175,13 +200,36 @@ class ResponsiveDrawer extends React.Component {
             <div>
                 <div className={classes.toolbar} />
                 <Divider />
+                {/*<List>*/}
+                    {/*{['ToDo', 'Calendar', 'Shopping lists'].map((text, index) => (*/}
+                        {/*<ListItem button key={text}>*/}
+                            {/*<ListItemIcon>{ index === 0 ? <DoneIcon/> : ((index === 1) ? <CalendarIcon/> : <ShoppingIcon/>)} </ListItemIcon>*/}
+                            {/*<ListItemText primary={text} />*/}
+                            {/*/!*<a href="/"{text}/>*!/*/}
+                        {/*</ListItem>*/}
+                    {/*))}*/}
+                {/*</List>*/}
+                {/*<Divider/>*/}
                 <List>
-                    {['ToDo', 'Calendar', 'Shopping lists'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{ index === 0 ? <DoneIcon/> : ((index === 1) ? <CalendarIcon/> : <ShoppingIcon/>)} </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
+                    <ListItem button key={this.drawerMenuItems[0]}>
+                        <Link to='/todo' style={{ textDecoration: 'none' }}>
+                        <ListItemIcon><DoneIcon/></ListItemIcon>
+                        <ListItemText primary={this.drawerMenuItems[0]}></ListItemText>
+                        {/*<a href="/todo"/>*/}
+                        </Link>
+                    </ListItem>
+                    <ListItem button key={this.drawerMenuItems[1]}>
+                        <Link to='/calendar' style={{ textDecoration: 'none' }}>
+                        <ListItemIcon><CalendarIcon/></ListItemIcon>
+                        <ListItemText primary={this.drawerMenuItems[1]}></ListItemText>
+                        </Link>
+                    </ListItem>
+                    <ListItem button key={this.drawerMenuItems[2]}>
+                        <Link to='/shopping' style={{ textDecoration: 'none' }}>
+                        <ListItemIcon><ShoppingIcon/></ListItemIcon>
+                        <ListItemText primary={this.drawerMenuItems[2]}></ListItemText>
+                        </Link>
+                    </ListItem>
                 </List>
                 {/*<Divider />*/}
                 {/*<List>*/}
@@ -227,7 +275,7 @@ class ResponsiveDrawer extends React.Component {
                             {/*<MenuItem onClick={this.handleMenuClose}>My account</MenuItem>*/}
                         {/*</Menu>*/}
                         {/*);*/}
-                        {/*<div className={classes.grow}/> */}
+                        <div className={classes.grow}/>
                         <div id="alignProfileButton" style={{right:"0",position:"absolute"}}>
                             <div className={classes.sectionDesktop}>
                                 {/*<IconButton color="inherit">*/}
@@ -318,17 +366,11 @@ class ResponsiveDrawer extends React.Component {
                         {/*ultrices sagittis orci a.*/}
                     {/*</Typography>*/}
 
-                    <h1>Tasks list:</h1>
-                    <TasksList/>
-                    <hr/>
-                    <h2>Task details:</h2>
-                    <TaskDetails />
-                    {/*<FloatingAddButton/>*/}
-                    <AddTaskDialog/>
-                    <AddGroceryListDialog/>
-                    {/*<Header/>*/}
-                    <LoginApp/>
-                    <SignupApp/>
+                    <Route path="/todo" component={TasksPage}/>
+                    <Route path="/calendar" component={CalendarPage}/>
+                    <Route path="/shopping" component={ShoppingListsPage}/>
+                    <Route path="/profile" component={UserProfilePage}/>
+                    {/*<TasksPage/>*/}
                     <Footer/>
                 </main>
                 {renderMenu}

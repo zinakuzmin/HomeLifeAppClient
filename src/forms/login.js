@@ -66,7 +66,7 @@ class LoginApp extends React.Component {
 
             <Column flexGrow={1}>
                 {/*<Row horizontal='center'>*/}
-                    {/*<h1>HEADER</h1>*/}
+                {/*<h1>HEADER</h1>*/}
                 {/*</Row>*/}
                 <Row vertical='center'>
                     <Column flexGrow={2} horizontal='center'>
@@ -80,67 +80,67 @@ class LoginApp extends React.Component {
                         <form>
 
                             <Row vertical='right'>
-                            <FormControl className={classes.margin}>
-                                <InputLabel htmlFor="input-with-icon-adornment"> User Name </InputLabel>
-                                <Input
-                                    id="input-with-icon-adornment"
-                                />
-                            </FormControl>
+                                <FormControl className={classes.margin}>
+                                    <InputLabel htmlFor="input-with-icon-adornment"> User Name </InputLabel>
+                                    <Input
+                                        id="input-with-icon-adornment"
+                                    />
+                                </FormControl>
                             </Row>
 
                             {/*<Row vertical='right'>*/}
                             {/*<FormControl className={classes.margin}>*/}
-                                {/*<InputLabel htmlFor="input-with-icon-adornment"> Password </InputLabel>*/}
-                                {/*<Input*/}
-                                    {/*id="input-with-icon-adornment"*/}
-                                {/*/>*/}
+                            {/*<InputLabel htmlFor="input-with-icon-adornment"> Password </InputLabel>*/}
+                            {/*<Input*/}
+                            {/*id="input-with-icon-adornment"*/}
+                            {/*/>*/}
                             {/*</FormControl >*/}
                             {/*</Row>*/}
 
 
                             <Row vertical='right'>
-                            <TextField
-                                id="outlined-adornment-password"
-                                className={classNames(classes.margin, classes.textField)}
-                                // variant="outlined"
-                                type={this.state.showPassword ? 'text' : 'password'}
-                                label="Password"
-                                value={this.state.password}
-                                onChange={this.handleChange('password')}
-                                InputProps={{
-                                    endAdornment: (
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="Toggle password visibility"
-                                                onClick={this.handleClickShowPassword}
-                                            >
-                                                {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    ),
-                                }}
-                            />
+                                <TextField
+                                    id="outlined-adornment-password"
+                                    className={classNames(classes.margin, classes.textField)}
+                                    // variant="outlined"
+                                    type={this.state.showPassword ? 'text' : 'password'}
+                                    label="Password"
+                                    value={this.state.password}
+                                    onChange={this.handleChange('password')}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    aria-label="Toggle password visibility"
+                                                    onClick={this.handleClickShowPassword}
+                                                >
+                                                    {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        ),
+                                    }}
+                                />
                             </Row>
 
                             <Row vertical='right'>
-                            <FormControl className={classes.margin}>
-                                <label>
-                                    <Checkbox/> Remember me
-                                </label>
-                            </FormControl>
+                                <FormControl className={classes.margin}>
+                                    <label>
+                                        <Checkbox/> Remember me
+                                    </label>
+                                </FormControl>
                             </Row>
 
                             <Row vertical='right'>
-                            <FormControl className={classes.margin}>
-                                <Button variant="contained" color="primary" className={classes.button}>Log in</Button>
-                            </FormControl>
+                                <FormControl className={classes.margin}>
+                                    <Button variant="contained" color="primary" className={classes.button}>Log in</Button>
+                                </FormControl>
                             </Row>
 
 
                         </form>
-                       <Row vertical='end'>
-                        <a href=""> Don't have an account? Sign up now</a>
-                       </Row>
+                        <Row vertical='end'>
+                            <a href=""> Don't have an account? Sign up now</a>
+                        </Row>
                     </Column>
                 </Row>
             </Column>

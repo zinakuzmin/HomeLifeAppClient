@@ -121,6 +121,18 @@ class AddGroceryListDialog extends React.Component {
     render(){
         const {classes} = this.props;
 
+
+        const renderGroceryList = (
+            <div className="ListOfItems" style={{borderColor: '#fffff'}}>
+                {console.log("from list " + this.createItemList())}
+                <ul>
+                    {this.createItemList()}
+                </ul>
+            </div>
+        );
+
+
+
         return (
             <div>
                 {/*<Button onClick={this.handleClickOpen}>Open select dialog</Button>*/}
@@ -214,6 +226,8 @@ class AddGroceryListDialog extends React.Component {
                         {/*<button type="button">Random (doesn't do anything)</button>*/}
                     {/*</form>*/}
                 {/*</div>*/}
+
+                {renderGroceryList}
 
             </div>
         );

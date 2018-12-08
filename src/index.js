@@ -7,6 +7,9 @@ import App from './components/app';
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {createStore} from 'redux';
 import allReducers from './reducers';
+import {BrowserRouter,Link, Route} from 'react-router-dom';
+// import {Router, Route, hashHistory} from 'react-router';
+import Login from './forms/login'
 
 const store = createStore(allReducers);
 
@@ -17,6 +20,33 @@ const store = createStore(allReducers);
 // }
 
 // ReactDOM.render(<Provider store={store}> <Wrapper /> </Provider>, document.getElementById('root'));
+
+
+//
+// const App1 = () => (
+//     <div>App
+//         <Link to='/'>Login</Link>
+//     </div>
+// )
+
+
+// const Login1 = () => (
+//     <div>Login
+//         <Link to='/login'>App</Link>
+//     </div>
+// )
+
+
+
+
+// ReactDOM.render(
+//     <BrowserRouter>
+//         <div>
+//             <Route path='/' component={App}/>
+//             <Route path='/login' component={Login}/>
+//         </div>
+//     </BrowserRouter>
+//     , document.getElementById('root'));
 
 ReactDOM.render(
     <Provider store={store}>
