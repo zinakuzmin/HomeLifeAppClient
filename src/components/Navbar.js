@@ -14,8 +14,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import DoneIcon from '@material-ui/icons/Assignment';
+import ShoppingIcon from '@material-ui/icons/ShoppingBasket';
+import CalendarIcon from '@material-ui/icons/Event';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -32,6 +33,8 @@ import LoginApp from "../forms/login";
 import SignupApp from '../forms/signup'
 import AddGroceryListDialog from "../containers/addGroceryListDialog";
 import Header from '../components/addGroceryItems'
+import Footer from "./Footer";
+//import AddGroceryListFloatingButton from '../containers/AddGroceryButton'
 
 
 
@@ -146,7 +149,7 @@ class ResponsiveDrawer extends React.Component {
                 <MenuItem>
                     <IconButton color="inherit">
                         <Badge badgeContent={4} color="secondary">
-                            <MailIcon />
+                            <CalendarIcon />
                         </Badge>
                     </IconButton>
                     <p>Messages</p>
@@ -173,22 +176,22 @@ class ResponsiveDrawer extends React.Component {
                 <div className={classes.toolbar} />
                 <Divider />
                 <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                    {['ToDo', 'Calendar', 'Shopping lists'].map((text, index) => (
                         <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                            <ListItemIcon>{ index === 0 ? <DoneIcon/> : ((index === 1) ? <CalendarIcon/> : <ShoppingIcon/>)} </ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItem>
                     ))}
                 </List>
-                <Divider />
-                <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
+                {/*<Divider />*/}
+                {/*<List>*/}
+                    {/*{['All mail', 'Trash', 'Spam'].map((text, index) => (*/}
+                        {/*<ListItem button key={text}>*/}
+                            {/*<ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>*/}
+                            {/*<ListItemText primary={text} />*/}
+                        {/*</ListItem>*/}
+                    {/*))}*/}
+                {/*</List>*/}
             </div>
         );
 
@@ -207,10 +210,11 @@ class ResponsiveDrawer extends React.Component {
                             <MenuIcon />
                         </IconButton>
                         <img src="home.png" width="40"/>
-                        {/*<Typography variant="h6" color="inherit" noWrap>*/}
-                            {/*Home Life*/}
-                        {/*</Typography>*/}
-
+                        <div style={{paddingLeft:"20px"}}>
+                            <Typography variant="h6" color="inherit">
+                                Home Life
+                            </Typography>
+                        </div>
                         {/*const renderMenu = (*/}
                         {/*<Menu*/}
                             {/*anchorEl={anchorEl}*/}
@@ -279,6 +283,14 @@ class ResponsiveDrawer extends React.Component {
                         </Drawer>
                     </Hidden>
                 </nav>
+
+                <nav className="nav-wrepper red darken-3">
+                    <div className="container">
+                        <ul>
+                            <li><a href="/login">Login</a></li>
+                        </ul>
+                    </div>
+                </nav>
                 <main className={classes.content}>
                     <div className={classes.toolbar} />
                     {/*<Typography paragraph>*/}
@@ -313,13 +325,11 @@ class ResponsiveDrawer extends React.Component {
                     <TaskDetails />
                     {/*<FloatingAddButton/>*/}
                     <AddTaskDialog/>
-                    {/*<AddGroceryListDialog/>*/}
-
+                    <AddGroceryListDialog/>
                     {/*<Header/>*/}
                     <LoginApp/>
                     <SignupApp/>
-                    {/*<TaskCreateForm/>*/}
-                    {/*<Login/>*/}
+                    <Footer/>
                 </main>
                 {renderMenu}
                 {renderMobileMenu}

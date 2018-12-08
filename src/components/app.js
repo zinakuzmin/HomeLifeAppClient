@@ -1,17 +1,22 @@
 import React from 'react';
+import {BrowserRouter, Route} from 'react-router-dom'
+import Login from '../forms/login'
+import Signup from '../forms/signup'
 import UserList from '../containers/user-list';
 import UserDetails from '../containers/user-details';
 import TasksList from '../containers/tasks-list';
 import TaskDetais from '../containers/task-details';
 import Header from "./Header";
-import Footer from "./Footer";
+//import Footer from "./Footer";
 import Navbar from "./Navbar";
 require('../scss/style.scss');
 
 
 
-const App = () => (
 
+
+const App = () => (
+    <BrowserRouter>
     <div>
         {/*<Header/>*/}
         <Navbar />
@@ -22,7 +27,7 @@ const App = () => (
         {/*<UserDetails />*/}
         {/*<hr/>*/}
 
-
+        <Route path='/login' component={Login}/>
         <h1>Tasks list:</h1>
         <TasksList/>
         <hr/>
@@ -30,7 +35,7 @@ const App = () => (
         <TaskDetais />
         {/*<Footer/>*/}
     </div>
-
+    </BrowserRouter>
 );
 
 
